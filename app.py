@@ -22,6 +22,9 @@ class SocketHandler(websocket.WebSocketHandler):
         if self in cl:
             cl.remove(self)
 
+    def on_message(self, message):
+        print(message)
+
 
 class ApiHandler(web.RequestHandler):
     @web.asynchronous

@@ -12,6 +12,13 @@
     <hr>
     WebSocket status : <span id="message"></span>
     <hr>
+    <input id="sendMessage" size="35" value="Rock it with HTML5 WebSocket">
+    <button id="send" class="wsButton">Send</button>
+    <div id="echo-log">
+        <strong>Log:</strong>
+        <div id="consoleLog"></div>
+        <button id="clearLogBut">Clear log</button>
+    </div>
     <h3>The following table shows values by using WebSocket</h3>
 
     <div class="row">
@@ -152,6 +159,20 @@
         $message.attr("class", 'label label-warning');
         $message.text('error occurred');
     };
+
+
+    //    GUI configure begin
+    sendMessage = document.getElementById("sendMessage");
+
+    sendBut = document.getElementById("send");
+    sendBut.onclick = doSend;
+
+    function doSend() {
+        console.log("SENT: " + sendMessage.value);
+        ws.send(sendMessage.value);
+    }
+    //    GUI configure end
+
 
 </script>
 </body>
